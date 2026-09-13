@@ -78,7 +78,7 @@ function App() {
 
     toast.success(`${technology.name} added to your stack!`);
   };
-}
+
   // Remove one technology
   const handleRemove = (id) => {
     const removedTechnology = myStack.find(
@@ -93,7 +93,8 @@ function App() {
       toast.info(`${removedTechnology.name} removed from your stack`);
     }
   };
-    // Remove everything
+
+  // Remove everything
   const handleRemoveAll = () => {
     if (myStack.length === 0) {
       toast.warning("Your stack is already empty!");
@@ -116,9 +117,8 @@ function App() {
         autoClose={2000}
         theme={darkMode ? "dark" : "light"}
       />
-      </div>
-      );
-            {/* ================= NAVBAR ================= */}
+
+      {/* ================= NAVBAR ================= */}
       <header className="navbar">
         <div className="container navbar-inner">
           <a href="#home" className="logo" onClick={closeMenu}>
@@ -167,7 +167,8 @@ function App() {
           </button>
         </div>
       </header>
-            {/* ================= HERO ================= */}
+
+      {/* ================= HERO ================= */}
       <main>
         <section className="hero-section" id="home">
           <div className="container hero-grid">
@@ -205,8 +206,11 @@ function App() {
 
       </div>
     </section>
-    </main>
-            {/* ================= TECHNOLOGIES ================= */}
+
+       
+             
+
+        {/* ================= TECHNOLOGIES ================= */}
         <section className="technologies-section" id="technologies">
           <div className="container">
             <div className="section-title">
@@ -278,17 +282,145 @@ function App() {
                   ))}
                 </div>
 
-                </div>
+                {/* ================= YOUR STACK ================= */}
+                <aside className="stack-sidebar">
+                  <div className="stack-heading">
+                    <div>
+                      <h2>Your Stack</h2>
+                      <p>
+                        {myStack.length} technology
+                        {myStack.length !== 1 ? "s" : ""} selected
+                      </p>
+                    </div>
+
+                    <span className="stack-count">
+                      {myStack.length}
+                    </span>
+                  </div>
+
+                  {myStack.length === 0 ? (
+                    <div className="empty-stack">
+                      <div className="empty-stack-icon">+</div>
+                      <h3>Your stack is empty</h3>
+                      <p>
+                        Add technologies from the list to build your
+                        development stack.
+                      </p>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="selected-list">
+                        {myStack.map((technology) => (
+                          <div
+                            className="selected-item"
+                            key={technology.id}
+                          >
+                            <div className="selected-icon">
+                             {(() => {
+                                const techData = techIcons[technology.name];
+                              if (!techData) return null;
+
+                         const Icon = techData.icon;
+
+                          return <Icon style={{ color: techData.color }} />;
+                                })()}
+                          </div>
+
+                            <div className="selected-info">
+                              <h4>{technology.name}</h4>
+                              <p>{technology.category}</p>
+                            </div>
+
+                            <button
+                              className="remove-btn"
+                              onClick={() =>
+                                handleRemove(technology.id)
+                              }
+                              aria-label={`Remove ${technology.name}`}
+                            >
+                              ×
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+
+                      <button
+                        className="remove-all-btn"
+                        onClick={handleRemoveAll}
+                      >
+                        Remove All
+                      </button>
+                    </>
+                  )}
+                </aside>
+              </div>
             )}
-                </div>
-                </section>
+          </div>
+        </section>
 
+        {/* ================= PROJECTS ================= */}
+        <section className="simple-section" id="projects">
+          <div className="container">
+            <p className="section-small-title">PROJECTS</p>
+            <h2>Build amazing projects with your stack.</h2>
+            <p>
+              Choose the right technologies and start building your next
+              project.
+            </p>
+          </div>
+        </section>
 
-       
-             
+        {/* ================= ABOUT ================= */}
+        <section className="simple-section about-section" id="about">
+          <div className="container">
+            <p className="section-small-title">ABOUT DEV STACK</p>
+            <h2>Everything you need to plan your development stack.</h2>
+            <p>
+              Dev Stack makes it easy to explore technologies, compare
+              options, and create a personalized technology stack.
+            </p>
+          </div>
+        </section>
+      </main>
 
-        
+      {/* ================= FOOTER ================= */}
+      <footer id="contact">
+        <div className="container footer-main">
+          <div className="footer-brand">
+            <a href="#home" className="logo">
+              <span className="logo-icon">&lt;/&gt;</span>
+              <span>Dev Stack</span>
+            </a>
 
+            <p>
+              Choose modern technologies and build the perfect stack for
+              your next project.
+            </p>
 
+            <div className="social-links">
+              <a href="#contact">GitHub</a>
+              <a href="#contact">Twitter</a>
+              <a href="#contact">LinkedIn</a>
+            </div>
+          </div>
 
+          <div className="footer-column">
+            <h4>PRODUCT</h4>
+            <a href="#home">Home</a>
+            <a href="#technologies">Technologies</a>
+            <a href="#projects">Projects</a>
+          </div>
 
+          <div className="footer-column">
+            <h4>COMPANY</h4>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact">Career</a>
+          </div>
+          </div>
+          </footer>
+</div>
+  );
+}
+
+export default App;
