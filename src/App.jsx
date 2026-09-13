@@ -118,6 +118,56 @@ function App() {
       />
       </div>
       );
+            {/* ================= NAVBAR ================= */}
+      <header className="navbar">
+        <div className="container navbar-inner">
+          <a href="#home" className="logo" onClick={closeMenu}>
+            <span className="logo-icon">&lt;/&gt;</span>
+            <span>Dev Stack</span>
+          </a>
+
+          <nav className={menuOpen ? "nav-links mobile-active" : "nav-links"}>
+            <a href="#home" onClick={closeMenu}>
+              Home
+            </a>
+            <a href="#technologies" onClick={closeMenu}>
+              Technologies
+            </a>
+            <a href="#projects" onClick={closeMenu}>
+              Projects
+            </a>
+            <a href="#about" onClick={closeMenu}>
+              About
+            </a>
+            <a href="#contact" onClick={closeMenu}>
+              Contact
+            </a>
+          </nav>
+
+          <div className="nav-actions">
+            <button className="sign-in">Sign In</button>
+            <button className="sign-up">Sign Up</button>
+
+            <button
+              className="theme-control"
+              onClick={() => setDarkMode(!darkMode)}
+              aria-label="Toggle theme"
+              title="Change theme"
+            >
+              {darkMode ? "☀️" : "◐"}
+            </button>
+          </div>
+
+          <button
+            className="hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+        </div>
+      </header>
+
 
 
 
