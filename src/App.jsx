@@ -167,6 +167,50 @@ function App() {
           </button>
         </div>
       </header>
+            {/* ================= HERO ================= */}
+      <main>
+        <section className="hero-section" id="home">
+          <div className="container hero-grid">
+            <div className="hero-content">
+              <h1>
+                Build Your Ideal
+                <span> Development Stack</span>
+              </h1>
+
+              <p>
+                Explore frontend, backend, database, and tooling options.
+                Compare them side by side, and put together the stack that's
+                right for your next project.
+              </p>
+
+              <div className="hero-buttons">
+                <a href="#technologies" className="explore-btn">
+                  Explore Technologies
+                </a>
+
+                <a href="#about" className="learn-btn">
+                  Learn More
+                </a>
+              </div>
+            </div>
+                 
+
+        <div className="hero-visual">
+          <img
+            className="hero-real-image"
+            src="/banner-stack.png"
+            alt="Development Stack"
+          />
+        </div>
+
+      </div>
+    </section>
+    </main>
+
+       
+             
+
+        
 
 
 
