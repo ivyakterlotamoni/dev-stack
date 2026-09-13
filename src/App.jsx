@@ -206,6 +206,83 @@ function App() {
       </div>
     </section>
     </main>
+            {/* ================= TECHNOLOGIES ================= */}
+        <section className="technologies-section" id="technologies">
+          <div className="container">
+            <div className="section-title">
+              <h2>
+                Explore the <span>Technologies</span>
+              </h2>
+
+              <p>
+                Pick one technology per category to build your ideal stack.
+              </p>
+            </div>
+
+            {loading ? (
+              <div className="loading-container">
+                <div className="spinner"></div>
+                <h3>Loading technologies...</h3>
+                <p>Please wait while we load the data.</p>
+              </div>
+            ) : (
+              <div className="technology-layout">
+                {/* Technology Cards */}
+                <div className="technology-grid">
+                  {technologies.map((technology) => (
+                    <article
+                      className="technology-card"
+                      key={technology.id}
+                    >
+                      <div className="card-top">
+                        <div className="technology-icon">
+                    {(() => {
+                      const techData = techIcons[technology.name];
+                if (!techData) return null;
+
+              const Icon = techData.icon;
+
+              return <Icon style={{ color: techData.color }} />;
+              })()}
+             </div>
+
+                        <span className="technology-badge">
+                          {technology.badge}
+                        </span>
+                      </div>
+
+                      <h3>{technology.name}</h3>
+
+                      <p className="card-description">
+                        {technology.description}
+                      </p>
+
+                      <div className="card-meta">
+                        <span>{technology.category}</span>
+                        <span>{technology.difficulty}</span>
+
+                        <span className="rating">
+                          ★ {technology.rating}
+                        </span>
+                      </div>
+
+                      <button
+                        className="add-stack-btn"
+                        onClick={() =>
+                          handleAddToStack(technology)
+                        }
+                      >
+                        Add to Stack
+                      </button>
+                    </article>
+                  ))}
+                </div>
+
+                </div>
+            )}
+                </div>
+                </section>
+
 
        
              
