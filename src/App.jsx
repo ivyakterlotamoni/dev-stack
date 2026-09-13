@@ -93,4 +93,31 @@ function App() {
       toast.info(`${removedTechnology.name} removed from your stack`);
     }
   };
+    // Remove everything
+  const handleRemoveAll = () => {
+    if (myStack.length === 0) {
+      toast.warning("Your stack is already empty!");
+      return;
+    }
+
+    setMyStack([]);
+    toast.info("All technologies removed!");
+  };
+
+  // Close mobile menu
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  return (
+    <div className={darkMode ? "app dark-mode" : "app"}>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        theme={darkMode ? "dark" : "light"}
+      />
+      </div>
+      );
+
+
 
