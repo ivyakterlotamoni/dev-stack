@@ -78,5 +78,19 @@ function App() {
 
     toast.success(`${technology.name} added to your stack!`);
   };
+}
+  // Remove one technology
+  const handleRemove = (id) => {
+    const removedTechnology = myStack.find(
+      (item) => item.id === id
+    );
 
- 
+    setMyStack((previousStack) =>
+      previousStack.filter((item) => item.id !== id)
+    );
+
+    if (removedTechnology) {
+      toast.info(`${removedTechnology.name} removed from your stack`);
+    }
+  };
+
